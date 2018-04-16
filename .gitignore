@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# masOS containing-folder custom attributes file
+.DS_Store
