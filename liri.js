@@ -32,24 +32,37 @@ var getArtists = function(artist) {
 
 // Function for getting song info
 var getSpotify = function(songTitle) {
-    spotifyKeys.search({ type: 'track', query: songTitle }, function(err, data) {
-        if (err) {
-          return console.log('Error occurred: ' + err);
-        }
-       ////// Add if statement to make "I Saw the Sign" the default song
-       if (songTitle == undefined) {
-           
-       }
-        var songs = data.tracks.items;
-        for (var i = 0; i < songs.length; i++) {
-            console.log(i+1);
-            console.log('Artist(s): ' + songs[i].artists.map(getArtists));
-            console.log('Song Name: ' + '"' + songs[i].name + '"');
-            console.log('Preview: ' + songs[i].preview_url);
-            console.log('Album: ' + songs[i].album.name);
-            console.log('----------------------------------------');
-        }
-      });
+    if (songTitle == undefined) {
+        spotifyKeys.search({ type: 'track', query: 'The Sign' }, function(err, data) {
+            if (err) {
+                return console.log('Error occurred: ' + err);
+            } else {
+                var songs = data.tracks.items;
+                console.log('----------------------------------------');
+                console.log('Artist(s): ' + songs[5].artists.map(getArtists));
+                console.log('Song Name: ' + '"' + songs[5].name + '"');
+                console.log('Preview: ' + songs[5].preview_url);
+                console.log('Album: ' + songs[5].album.name);
+                console.log('----------------------------------------');
+            }
+        });
+    } else {
+        spotifyKeys.search({ type: 'track', query: songTitle }, function(err, data) {
+            if (err) {
+              return console.log('Error occurred: ' + err);
+            }
+            var songs = data.tracks.items;
+            for (var i = 0; i < songs.length; i++) {
+                console.log(i+1);
+                console.log('Artist(s): ' + songs[i].artists.map(getArtists));
+                console.log('Song Name: ' + '"' + songs[i].name + '"');
+                console.log('Preview: ' + songs[i].preview_url);
+                console.log('Album: ' + songs[i].album.name);
+                console.log('----------------------------------------');
+            }
+          });
+    }
+
 }
 
 // Function for getting movie info
@@ -61,12 +74,12 @@ var getMovie = function(movieTitle) {
             console.log('Title: ' + jsonData.Title);
             console.log('Year Released: ' + jsonData.Year);
             console.log('IMDb Rating: ' + jsonData.imdbRating);
+            console.log('Rotten Tomatoes Rating: ' + jsonData.tomatoRating);
             console.log('Country: ' + jsonData.Country);
             console.log('Language: '+ jsonData.Language);
             console.log('Plot Synopsis: ' + jsonData.Plot);
             console.log('Cast: ' + jsonData.Actors);
         }
-        ////// Add if statement to make "Mr. Nobody" the default movie
       });
 }
 
@@ -91,10 +104,14 @@ var commandLiri = function(caseData, functionData) {
             getTweets();
             break;
         case 'spotify-this-song':
-            getSpotify(functionData);
+                getSpotify(functionData);
             break;
         case 'movie-this':
+            if (functionData == undefined) {
+                getMovie("Mr. Nobody");
+            } else {
             getMovie(functionData);
+            }
             break;
         case 'do-what-it-says':
             doWhat();
