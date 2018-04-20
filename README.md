@@ -5,7 +5,7 @@ LIRI is a command line node app that takes in parameters and returns data from T
 
 [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
 
-####Dependencies
+#### Dependencies
 * [dotenv](https://www.npmjs.com/package/dotenv)
 * [node-spotify-api](https://www.npmjs.com/package/node-spotify-api)
 * [twitter](https://www.npmjs.com/package/twitter)
