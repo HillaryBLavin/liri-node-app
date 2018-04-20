@@ -3,7 +3,9 @@
 
 LIRI is a command line node app that takes in parameters and returns data from Twitter, Spotify, and The Open Movie Database.
 
-[![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com)
+![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)(https://forthebadge.com) 
+![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)
+
 
 ### Dependencies
 * [dotenv](https://www.npmjs.com/package/dotenv)
