@@ -67,14 +67,14 @@ var getSpotify = function(songTitle) {
 
 // Function for getting movie info
 var getMovie = function(movieTitle) {
-    request('http://www.omdbapi.com/?apikey=trilogy&t=' + movieTitle + '&r=json', function (error, response, body) {
+    request('http://www.omdbapi.com/?apikey=trilogy&t=' + movieTitle + '&tomatoes=true&r=json', function (error, response, body) {
         if(!error && response.statusCode == 200) {
             var jsonData = JSON.parse(body);
 
             console.log('Title: ' + jsonData.Title);
             console.log('Year Released: ' + jsonData.Year);
             console.log('IMDb Rating: ' + jsonData.imdbRating);
-            console.log('Rotten Tomatoes Rating: ' + jsonData.tomatoRating);
+            console.log('Rotten Tomatoes Rating: ' + jsonData.Ratings[1].Value);
             console.log('Country: ' + jsonData.Country);
             console.log('Language: '+ jsonData.Language);
             console.log('Plot Synopsis: ' + jsonData.Plot);
