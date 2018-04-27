@@ -3,8 +3,8 @@ require("dotenv").config();
 
 // Variables and constructors
 var keys = require('./keys.js'), // Import keys.js
-    fs = require('fs'); // Require FS (for use with do-what-it-says)
-    request = require('request'); // Require Request package
+    fs = require('fs'), // Require FS (for use with do-what-it-says)
+    request = require('request'), // Require Request package
     Spotify = require("node-spotify-api"), // Require Spotify API package
     Twitter = require("twitter"), // Require Twitter package
     spotifyKeys = new Spotify(keys.spotify), // Spotify key constructor
